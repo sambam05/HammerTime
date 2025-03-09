@@ -27,10 +27,10 @@ public class EnchantmentGenerator extends FabricDynamicRegistryProvider {
                         Enchantment.definition(
                                         itemLookup.getOrThrow(ItemTags.PICKAXES),
                                         itemLookup.getOrThrow(ItemTags.PICKAXES),
-                                        5, // Weight (enchantment table rarity)
+                                        12, // Weight (enchantment table rarity)
                                         1, // Max level
                                         Enchantment.leveledCost(15, 5), // Min cost
-                                        Enchantment.leveledCost(45, 5), // Max cost
+                                        Enchantment.leveledCost(30, 5), // Max cost
                                         5, // Anvil cost
                                         AttributeModifierSlot.HAND
                                 )

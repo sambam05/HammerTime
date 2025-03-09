@@ -1,10 +1,12 @@
 {
   "anvil_cost": 5,
   "description": {
-    "translate": "enchantment.hammertime.hammer"
+    "translate": "enchantment.hammertime.hammer",
+    "fallback": "Hammer"
   },
+  "exclusive_set":"#hammertime:exclusive_set/mining",
   "max_cost": {
-    "base": 45,
+    "base": 65,
     "per_level_above_first": 5
   },
   "max_level": 1,
@@ -17,7 +19,6 @@
     "hand"
   ],
   "supported_items": "#minecraft:pickaxes",
-  "weight": 100,
-  "treasure": false,
-  "discoverable": true
+  "weight": 10,
+  "treasure": false
 }

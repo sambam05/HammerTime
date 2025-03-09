@@ -1,6 +1,6 @@
 package com.sheath.hammertime;
 
-import com.sheath.hammertime.events.BlockBreakHandler;
+import com.sheath.hammertime.events.HammerHandler;
 import com.sheath.hammertime.init.EnchantmentInit;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
@@ -18,7 +18,7 @@ public class Hammertime implements ModInitializer {
 
         EnchantmentInit.register();
 
-        BlockBreakHandler.register();
+        HammerHandler.register();
 
     }
 
