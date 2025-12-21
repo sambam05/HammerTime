@@ -12,6 +12,8 @@ crashreports/
 **/.cache/
 v1.21+/
 v1.21.2+/
+HammerMining-fabric-v1.20-v1.20.4/
+HammerMining-fabric-v1.20.5-v1.20.6/
 
 # IDE/Editors
 .idea/
