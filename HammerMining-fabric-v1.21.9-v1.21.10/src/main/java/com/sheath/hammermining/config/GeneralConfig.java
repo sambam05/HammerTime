@@ -25,6 +25,8 @@ public class GeneralConfig {
     public int tradeMaxUses = 3;
 
     public boolean lootEnabled = true;
+    // If true, Hammer participates in vanilla enchanted_book rolls; if false, use the custom pool with dropChance.
+    public boolean useVanillaEnchantedBookRolls = true;
     // Chance a Hammer book appears in targeted loot tables (0.0 - 1.0). Default lowered to reduce book spam.
     public float dropChance = 0.05f;
     public List<String> lootTableTargets = List.of(
@@ -76,6 +78,7 @@ public class GeneralConfig {
 
                 // LootChests
                 config.lootEnabled = fileConfig.getOrElse("LootChests.enabled", config.lootEnabled);
+                config.useVanillaEnchantedBookRolls = fileConfig.getOrElse("LootChests.useVanillaEnchantedBookRolls", config.useVanillaEnchantedBookRolls);
                 config.dropChance = clamp01(((Number) fileConfig.getOrElse("LootChests.dropChance", config.dropChance)).floatValue());
                 config.lootTableTargets = fileConfig.getOrElse("LootChests.lootTableTargets", config.lootTableTargets);
 
@@ -133,6 +136,9 @@ public class GeneralConfig {
         // LootChests
         fileConfig.set("LootChests.enabled", values.lootEnabled);
         fileConfig.setComment("LootChests.enabled", "Enable Hammer enchantment book drops in loot chests (true/false).");
+
+        fileConfig.set("LootChests.useVanillaEnchantedBookRolls", values.useVanillaEnchantedBookRolls);
+        fileConfig.setComment("LootChests.useVanillaEnchantedBookRolls", "If true, Hammer participates in vanilla enchanted_book rolls (recommended). If false, a custom pool uses dropChance instead.");
 
         float sanitizedDrop = clamp01(values.dropChance);
         fileConfig.set("LootChests.dropChance", sanitizedDrop);

@@ -27,6 +27,10 @@ public class LootInit {
 
     public static void register() {
         if(!LOOT_CONFIG.lootEnabled){return;}
+        if (LOOT_CONFIG.useVanillaEnchantedBookRolls) {
+            ModLogger.info("Skipping custom loot injection; Hammer will use vanilla enchanted_book rolls.");
+            return;
+        }
         LootTableEvents.MODIFY.register((tableKey, tableBuilder, source, registries) -> {
             if (!source.isBuiltin()) return;
 
