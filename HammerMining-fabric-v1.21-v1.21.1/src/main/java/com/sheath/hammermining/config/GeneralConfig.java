@@ -25,7 +25,8 @@ public class GeneralConfig {
     public int tradeMaxUses = 3;
 
     public boolean lootEnabled = true;
-    public float dropChance = 0.25f;
+    // Chance a Hammer book appears in targeted loot tables (0.0 - 1.0). Default lowered to reduce book spam.
+    public float dropChance = 0.05f;
     public List<String> lootTableTargets = List.of(
             "minecraft:chests/abandoned_mineshaft", "minecraft:chests/ancient_city",
             "minecraft:chests/ancient_city_ice_box", "minecraft:chests/bastion_bridge", "minecraft:chests/bastion_hoglin_stable",
@@ -75,7 +76,7 @@ public class GeneralConfig {
 
                 // LootChests
                 config.lootEnabled = fileConfig.getOrElse("LootChests.enabled", config.lootEnabled);
-                config.dropChance = ((Number) fileConfig.getOrElse("LootChests.dropChance", config.dropChance)).floatValue();
+                config.dropChance = clamp01(((Number) fileConfig.getOrElse("LootChests.dropChance", config.dropChance)).floatValue());
                 config.lootTableTargets = fileConfig.getOrElse("LootChests.lootTableTargets", config.lootTableTargets);
 
                 // Mining tweaks
@@ -133,8 +134,9 @@ public class GeneralConfig {
         fileConfig.set("LootChests.enabled", values.lootEnabled);
         fileConfig.setComment("LootChests.enabled", "Enable Hammer enchantment book drops in loot chests (true/false).");
 
-        fileConfig.set("LootChests.dropChance", values.dropChance);
-        fileConfig.setComment("LootChests.dropChance", "Chance a Hammer book drops from targeted loot tables (0.0-1.0). Higher = more common.");
+        float sanitizedDrop = clamp01(values.dropChance);
+        fileConfig.set("LootChests.dropChance", sanitizedDrop);
+        fileConfig.setComment("LootChests.dropChance", "Chance a Hammer book drops from targeted loot tables (0.0-1.0). Lower this if books feel too common.");
 
         fileConfig.set("LootChests.lootTableTargets", values.lootTableTargets);
         fileConfig.setComment("LootChests.lootTableTargets", "List of loot table IDs where Hammer books can appear.");
@@ -154,6 +156,10 @@ public class GeneralConfig {
 
         fileConfig.set("Mining.fortuneMainBlockOnly", values.fortuneMainBlockOnly);
         fileConfig.setComment("Mining.fortuneMainBlockOnly", "If true, Fortune applies only to the original block; extra blocks ignore Fortune to prevent double-dipping.");
+    }
+
+    private static float clamp01(float value) {
+        return Math.max(0f, Math.min(1f, value));
     }
 
 
