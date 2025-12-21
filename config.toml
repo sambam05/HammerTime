@@ -1,0 +1,33 @@
+# Root keys must come before any [tables]
+model = "gpt-5.1-codex-max"
+model_reasoning_effort = "high"
+
+# Let Codex decide when to ask for escalated command perms
+approval_policy = "on-request"
+
+# Allow writing inside the workspace, sandboxed
+# (same as `--sandbox workspace-write`)
+sandbox_mode = "workspace-write"
+
+# Make VS Code links in output clickable
+file_opener = "vscode"
+
+# Optional: enable first-party web search requests from the model
+[features]
+web_search_request = true
+
+# Extra sandbox config that only applies when sandbox_mode = "workspace-write"
+[sandbox_workspace_write]
+# Extra writable roots (your Windows paths)
+writable_roots = [
+  "C:\\Programming\\VMM Rebuild",
+  "C:\\Programming\\HammerMining",
+]
+
+# This is the important bit: allow outbound network from commands
+# (curl, npm, git over HTTPS, etc)
+network_access = true
+
+# If you want to be explicit about tmp behavior (optional, defaults are false)
+exclude_tmpdir_env_var = false
+exclude_slash_tmp = false

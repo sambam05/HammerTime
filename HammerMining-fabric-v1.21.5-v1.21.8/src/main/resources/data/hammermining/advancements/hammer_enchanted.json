@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:enchanted_book"
+    },
+    "title": {
+      "text": "Hammer Time"
+    },
+    "description": {
+      "text": "Apply the Hammer enchantment to a pickaxe"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_hammer_enchant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "enchantments": [
+                {
+                  "enchantment": "hammermining:hammer",
+                  "levels": {
+                    "min": 1
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_hammer_enchant"
+    ]
+  ]
+}

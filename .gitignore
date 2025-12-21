@@ -1,0 +1,31 @@
+# Build outputs
+dist-fabric/
+dist-neoforge/
+build-logs/
+crashreports/
+**/run/
+**/build/
+**/.gradle/
+**/.gradle_user*/
+.gradle/
+.tmp/
+**/.cache/
+
+# IDE/Editors
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs and archives
+*.log
+*.log.gz
+*.tmp
+*.swp
+*.zip
+*.tar.gz
